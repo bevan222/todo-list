@@ -1,0 +1,32 @@
+###
+GET http://localhost:5000
+
+
+###
+GET http://localhost:5000/getTasks
+
+###
+POST http://localhost:5000/newTask
+Content-Type: : application/json
+
+{
+    "taskName": "first task",
+    "dueDate": "2023-08-12",
+    "creatorId": "2",
+    "description": "This is first task test"
+}
+
+###
+POST http://localhost:5000/newUser
+Content-Type: : application/json
+
+{
+    "username": "bevan",
+}
+
+###
+GET http://localhost:5000/getUsers
+
+###
+
+//psql -h localhost -U postgres

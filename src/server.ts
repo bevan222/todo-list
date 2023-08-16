@@ -222,7 +222,7 @@ app.post('/user/createUser', (req: Request, res: Response) => {
 //Comment API
 app.post('/comment/getTaskComment', (req: Request, res: Response) => {
   const { taskId } = req.body
-  pool.query('SELECT comments.id as id, comments.message as message, comments.created_at as "createTime", users.username as creator FROM comments LEFT JOIN users ON comments.creator_id = users.id WHERE comments.belong_task_id = ($1) ORDER BY comments.created_at;',  [taskId], (error, results) => {
+  pool.query('SELECT comments.id as id, comments.message as message, comments.created_at as "createTime", comments.belong_task_id as "belongTaskId", users.username as creator FROM comments LEFT JOIN users ON comments.creator_id = users.id WHERE comments.belong_task_id = ($1) ORDER BY comments.created_at;',  [taskId], (error, results) => {
     if (error) {
       res.status(400).send({message:error})
       throw error
